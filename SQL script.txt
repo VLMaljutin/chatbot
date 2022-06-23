@@ -1,0 +1,19 @@
+1)Создание бд
+CREATE DATABASE chatbot;
+
+2)Создание таблиц
+CREATE TABLE Table_Session
+(
+	Id SERIAL PRIMARY KEY,
+	StartSession TIMESTAMP,
+	EndSession TIMESTAMP
+);
+
+CREATE TABLE Table_Message
+(
+	Id SERIAL PRIMARY KEY,
+	TimeMessage TIMESTAMP,
+	IdSession INTEGER REFERENCES Table_Session (Id) ON DELETE CASCADE,
+	Message TEXT,
+	IdClient INTEGER
+);
